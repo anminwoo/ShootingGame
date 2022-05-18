@@ -32,7 +32,7 @@ public class PlayerBullet : MonoBehaviour
 
     void Move()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
     }
 
     private void OnBecameInvisible()
