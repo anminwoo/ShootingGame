@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     public GameObject bullet;
 
-    private void Awake()
+    private void Awake() // PlayerSetting()
     {
         hp = 100;
         maxHp = hp;
