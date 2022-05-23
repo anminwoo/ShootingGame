@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public float baseSpeed;
     public float currentSpeed;
 
+    public GameObject bullet;
+
     private void Awake()
     {
         hp = 100;
@@ -27,7 +29,6 @@ public class Player : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

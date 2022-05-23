@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private BoxCollider2D collider;
     private Player player;
-    
+
     private void Awake()
     {
         collider = GetComponent<BoxCollider2D>();
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
+        Shoot();
     }
 
     void Move()
@@ -43,6 +43,14 @@ public class PlayerController : MonoBehaviour
         
         transform.Translate(Vector3.right * h);
         transform.Translate(Vector3.up * v);
+    }
+
+    void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(player.bullet, transform.position, player.bullet.transform.rotation);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
