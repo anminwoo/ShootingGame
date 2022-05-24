@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Player States")]
     public int   hp;
     public int   maxHp;
+    [Space]
     public int   baseDamage;
     public int   currentDamage;
+    [Space]
     public float baseSpeed;
     public float currentSpeed;
 
