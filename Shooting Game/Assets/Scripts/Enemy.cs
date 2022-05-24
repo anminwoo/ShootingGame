@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,7 +18,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rigid;
     private BoxCollider2D collider;
 
-    private Player player;
+    [SerializeField] private Player player;
 
     private void Awake() // EnemySetting
     {
@@ -28,7 +29,7 @@ public class Enemy : MonoBehaviour
         baseSpeed     = 3.0f;
         currentSpeed  = baseDamage;
         
-        player   = GetComponent<Player>();
+        player   = gameObject.AddComponent<Player>();
         rigid    = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
     }
@@ -55,9 +56,9 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (gameObject.CompareTag("Bullet"))
+        if (col.CompareTag("Bullet"))
         {
-            hp -= currentDamage;
+            hp -= player.currentDamage;
             Debug.Log($"Remain hp: {hp}");
         }
     }

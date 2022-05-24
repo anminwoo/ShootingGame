@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 510811286}
   m_Layer: 0
   m_Name: Common Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -381,6 +381,7 @@ MonoBehaviour:
   currentDamage: 0
   baseSpeed: 0
   currentSpeed: 0
+  player: {fileID: 0}
 --- !u!212 &510811287
 SpriteRenderer:
   m_ObjectHideFlags: 0
