@@ -62,9 +62,9 @@ public class UIManager : MonoBehaviour
         hpSlider.value = player.hp;
     }
 
-    public void IncreaseDamage(int damage)
+    public void IncreaseDamage(int extraDamage)
     {
-        player.currentDamage += damage;
+        player.currentDamage += extraDamage;
     }
 
     public void DecreaseDamage(int damage)
@@ -72,16 +72,41 @@ public class UIManager : MonoBehaviour
         player.currentDamage -= damage;
     }
 
-    public void IncreaseMaxHp(int hp)
+    public void IncreaseMaxHp(int extraHp)
     {
-        player.maxHp += hp;
-        player.hp += hp;
+        SetHpSlider(0, player.maxHp + extraHp, player.hp + extraHp);
+        // player.maxHp += extraHp;
+        // player.hp    += extraHp;
+        // hpSlider.maxValue = player.maxHp;
+        // hpSlider.value    = player.hp;
+    }
+
+    public void DecreaseMaxHp(int lossHp)
+    {
+        player.maxHp -= lossHp;
+        if (player.hp > player.maxHp)
+        {
+            player.hp = player.maxHp;
+        }
+
+        SetHpSlider(0, player.maxHp, player.hp);
         hpSlider.maxValue = player.maxHp;
         hpSlider.value = player.hp;
     }
 
-    public void DecreaseMaxHp(int hp)
+    public void IncreaseSpeed(float extraSpeed)
     {
-        player.maxHp -= hp;
+        player.currentSpeed += extraSpeed;
     }
+    
+    
+
+    public void SetHpSlider(int minValue, int maxValue, int currentValue)
+    {
+        hpSlider.minValue = minValue;     // 최소 hp
+        hpSlider.maxValue = maxValue;     // 최대 hp
+        hpSlider.value    = currentValue; // 현재 hp
+    }
+    
+    // public void SetSlider(Slider slider, int minValue, int maxValue, int currentValue) {}
 }
