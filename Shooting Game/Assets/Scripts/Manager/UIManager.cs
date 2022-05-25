@@ -11,14 +11,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text maxHpText;
 
     [SerializeField] private Text scoreText;
-    
+
     [SerializeField] private Slider hpSlider;
-    
+
     [SerializeField] private Player player;
 
     private void Awake()
     {
-        
+
     }
 
     void Start()
@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void HealHp(int heal)
@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
         {
             player.hp += heal;
         }
+
         hpSlider.value = player.hp;
     }
 
@@ -57,6 +58,30 @@ public class UIManager : MonoBehaviour
         {
             player.hp -= damage;
         }
+
         hpSlider.value = player.hp;
+    }
+
+    public void IncreaseDamage(int damage)
+    {
+        player.currentDamage += damage;
+    }
+
+    public void DecreaseDamage(int damage)
+    {
+        player.currentDamage -= damage;
+    }
+
+    public void IncreaseMaxHp(int hp)
+    {
+        player.maxHp += hp;
+        player.hp += hp;
+        hpSlider.maxValue = player.maxHp;
+        hpSlider.value = player.hp;
+    }
+
+    public void DecreaseMaxHp(int hp)
+    {
+        player.maxHp -= hp;
     }
 }
