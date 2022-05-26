@@ -38,35 +38,35 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void HealHp(int heal)
+    public void HealHp(int heal) // 플레이어가 회복을 받음
     {
-        if (player.currentHp + heal > player.maxHp)
+        if (player.currentHp + heal > player.maxHp) // 회복량 + 현재 체력이 최대 체력 보다 클 때
         {
             player.currentHp = player.maxHp;
-            SetHpSlider(player.currentHp);
             Debug.Log($"회복량이 플레이어의 최대 체력{player.maxHp}을 넘어 최대체력으로 설정됨.");
 
         }
-        else
+        else // 회복량 + 현재 체력이 최대 체력 보다 작을 때
         {
             Debug.Log($"회복 전 플레이어의 체력: {player.currentHp}");
             player.currentHp += heal;
             Debug.Log($"회복 후 플레이어의 체력: {player.currentHp}");
-            SetHpSlider(player.currentHp);
         }
-
-        hpSlider.value = player.currentHp;
+        SetHpSlider(player.currentHp);
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(int damage) // 플레이어가 데미지를 입음
     {
         Debug.Log($"공격 받기 전 플레이어의 체력: {player.currentHp}"); // 지우기
-        if (player.currentHp - damage <= 0)
+        if (player.currentHp - damage <= player.minHp) // 플레이어 현재 체력 - 데미지가 최소 체력 보다 작을 때
         {
-            // hp 1로 살아남는 능력이 있다면 여기에 추가
-            player.currentHp = 0;
-            Debug.Log($"플레이어의 체력이 {player.currentHp}이 되어 사망하였습니다."); // 지우기
-            // Dead()
+            // 능력이라던지 특정 아이템 켜기
+            player.currentHp = player.minHp;
+            if (player.currentHp == 0)
+            {
+                // Dead()
+                Debug.Log($"플레이어의 체력이 {player.currentHp}이 되어 사망하였습니다."); // 지우기
+            }
             // 부활 기능도 추가하면 좋을 듯
         }
         else
@@ -106,9 +106,7 @@ public class UIManager : MonoBehaviour
             player.currentHp = player.maxHp;
         }
 
-        SetHpSlider(0, player.maxHp, player.currentHp);
-        hpSlider.maxValue = player.maxHp;
-        hpSlider.value = player.currentHp;
+        SetHpSlider(player.maxHp, player.currentHp);
     }
 
     public void IncreaseSpeed(float extraSpeed)
@@ -120,7 +118,7 @@ public class UIManager : MonoBehaviour
     {
         player.currentSpeed -= lossSpeed;
     }
-
+    
     public void SetHpSlider(int currentValue) // currentHp만 바꾸는 함수
     {
         hpSlider.value = currentValue;

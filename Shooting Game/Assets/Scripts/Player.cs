@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [Header("Player States")]
     public int   currentHp;
     public int   maxHp;
+    public int   minHp;
     [Space]
     public int   baseDamage;
     public int   currentDamage;
@@ -19,8 +20,9 @@ public class Player : MonoBehaviour
 
     private void Awake() // PlayerSetting()
     {
-        currentHp = 100;
-        maxHp = currentHp;
+        maxHp = 100;
+        currentHp = maxHp;
+        minHp = 0;
         baseDamage = 10;
         currentDamage = baseDamage;
         baseSpeed = 10.0f;
