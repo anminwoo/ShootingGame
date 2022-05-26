@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Player States")]
-    public int   hp;
+    public int   currentHp;
     public int   maxHp;
     [Space]
     public int   baseDamage;
@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
 
     private void Awake() // PlayerSetting()
     {
-        hp = 100;
-        maxHp = hp;
+        currentHp = 100;
+        maxHp = currentHp;
         baseDamage = 10;
         currentDamage = baseDamage;
         baseSpeed = 10.0f;
