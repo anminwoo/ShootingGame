@@ -6,15 +6,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Player States")]
-    public int   currentHp;
-    public int   maxHp;
-    public int   minHp;
+    public int   currentHp; // 현재 체력
+    public int   maxHp; // 최대 체력
+    public int   minHp; // 최소 체력
     [Space]
-    public int   baseDamage;
-    public int   currentDamage;
+    public int   baseDamage; // 기본 공격력
+    public int   currentDamage; // 현재 공격력
     [Space]
-    public float baseSpeed;
-    public float currentSpeed;
+    public float baseSpeed; // 기본 이동속도
+    public float currentSpeed; // 현재 이동속도
 
     public GameObject bullet;
 

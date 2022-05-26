@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private int score;
     [SerializeField] private Text currentHpText;
     [SerializeField] private Text maxHpText;
 
@@ -117,6 +118,12 @@ public class UIManager : MonoBehaviour
     {
         // 플레이어 이속이 음수가 되지 않도록 방지 해줘야 할 수도 있다
         player.currentSpeed -= lossSpeed;
+    }
+    
+    public void GetScore(int getScore) // 플레이어 점수 획득
+    {
+        score += getScore;
+        scoreText.text = score.ToString();
     }
     
     public void SetHpSlider(int currentValue) // currentHp만 바꾸는 함수
