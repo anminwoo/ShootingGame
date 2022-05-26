@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
         if (col.CompareTag("Bullet"))
         {
             hp -= player.currentDamage;
-            
+            Destroy(col.gameObject);
             if (isDead())
             {
                 Destroy(gameObject);
@@ -72,5 +72,10 @@ public class Enemy : MonoBehaviour
     public bool isDead()
     {
         return hp <= 0 ? true : false;
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 }
