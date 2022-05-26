@@ -23,8 +23,11 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        hpSlider.maxValue = player.maxHp;
-        hpSlider.value = player.hp;
+        hpText.text       = player.hp.ToString(); // 플레이어 현재 체력 텍스트
+        maxHpText.text    = player.maxHp.ToString(); // 플레이어 최대 체력 텍스트
+        hpSlider.maxValue = player.maxHp; // 플레이어 최대 체력 게이지
+        hpSlider.value    = player.hp; // 플레이어 현재 체력 게이지
+        // Debug.Log($"player hp: {player.hp}, player maxHp {player.maxHp}");
     }
 
     void Update()
