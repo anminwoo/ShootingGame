@@ -98,8 +98,11 @@ public class UIManager : MonoBehaviour
     {
         player.currentSpeed += extraSpeed;
     }
-    
-    
+
+    public void DecreaseSpeed(float lossSpeed)
+    {
+        player.currentSpeed -= lossSpeed;
+    }
 
     public void SetHpSlider(int minValue, int maxValue, int currentValue)
     {
