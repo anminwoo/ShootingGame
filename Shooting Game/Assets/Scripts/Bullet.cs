@@ -32,4 +32,9 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log(col.gameObject.name);
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 }
