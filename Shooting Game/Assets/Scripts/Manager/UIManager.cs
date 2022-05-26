@@ -76,46 +76,46 @@ public class UIManager : MonoBehaviour
         }
 
         SetHpSlider(player.currentHp);
-        hpSlider.value = player.currentHp;
     }
 
-    public void IncreaseDamage(int extraDamage)
+    public void IncreaseDamage(int extraDamage) // 플레이어의 현재 공격력을 올린다.
     {
         player.currentDamage += extraDamage;
     }
 
-    public void DecreaseDamage(int damage)
+    public void DecreaseDamage(int damage) // 플레이어의 현재 공격력을 줄인다.
     {
+        // 공격력이 음수가 되지 않도록 처리 필요함
         player.currentDamage -= damage;
     }
 
-    public void IncreaseMaxHp(int extraHp)
+    public void IncreaseMaxHp(int extraHp) // 플레이어의 최대 체력을 늘린다.
     {
         SetHpSlider(0, player.maxHp + extraHp, player.currentHp + extraHp);
-        // player.maxHp += extraHp;
-        // player.hp    += extraHp;
-        // hpSlider.maxValue = player.maxHp;
-        // hpSlider.value    = player.hp;
     }
 
-    public void DecreaseMaxHp(int lossHp)
+    public void DecreaseMaxHp(int lossHp) // 플레이어의 최대체력을 줄인다
     {
         player.maxHp -= lossHp;
+        if (player.maxHp <= 0) // 플레이어의 최대 체력 <= 0 이된다면
+        {
+            player.maxHp = 1; // 최대 체력을 1로 함
+        }
         if (player.currentHp > player.maxHp)
         {
             player.currentHp = player.maxHp;
         }
-
         SetHpSlider(player.maxHp, player.currentHp);
     }
 
-    public void IncreaseSpeed(float extraSpeed)
+    public void IncreaseSpeed(float extraSpeed) // 플레이어의 현재 이동속도를 올린다.
     {
         player.currentSpeed += extraSpeed;
     }
 
-    public void DecreaseSpeed(float lossSpeed)
+    public void DecreaseSpeed(float lossSpeed) // 플레이어의 현재 이동속도를 줄인다.
     {
+        // 플레이어 이속이 음수가 되지 않도록 방지 해줘야 할 수도 있다
         player.currentSpeed -= lossSpeed;
     }
     
