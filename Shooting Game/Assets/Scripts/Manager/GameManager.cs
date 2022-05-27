@@ -89,7 +89,9 @@ public class GameManager : MonoBehaviour
     
     public void IncreaseMaxHp(int extraHp) // 플레이어의 최대 체력을 늘린다.
     {
-        uiManager.SetHpSlider(player.maxHp + extraHp, player.currentHp + extraHp);
+        player.maxHp += extraHp;
+        player.currentHp += extraHp; //늘어난 체력만큼 현재 체력에도 추가.
+        uiManager.SetHpSlider(player.maxHp, player.currentHp);
     }
 
     public void DecreaseMaxHp(int lossHp) // 플레이어의 최대체력을 줄인다

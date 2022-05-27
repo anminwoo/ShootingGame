@@ -8,10 +8,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private int score;
+    [SerializeField] private int  score;
     [SerializeField] private Text currentHpText;
     [SerializeField] private Text maxHpText;
-
     [SerializeField] private Text scoreText;
 
     [SerializeField] private Slider hpSlider;
