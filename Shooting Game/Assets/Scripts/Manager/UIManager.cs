@@ -52,15 +52,31 @@ public class UIManager : MonoBehaviour
     public void SetHpSlider(int maxValue, int currentValue) // maxHp, currentHp만 바꾸는 함수
     {
         hpSlider.maxValue = maxValue;     // 최대 hp
-        hpSlider.value    = currentValue; // 현재 hp
+        SetHpSlider(currentValue);
+        
+        // hpSlider.value    = currentValue; // 현재 hp
     }
 
     public void SetHpSlider(int minValue, int maxValue, int currentValue) // minHp, maxHp, currentHp를 다 바꾸는 함수
     {
         hpSlider.minValue = minValue;     // 최소 hp
-        hpSlider.maxValue = maxValue;     // 최대 hp
-        hpSlider.value    = currentValue; // 현재 hp
+        SetHpSlider(maxValue, currentValue);
+        
+        // hpSlider.maxValue = maxValue;     // 최대 hp
+        // hpSlider.value    = currentValue; // 현재 hp
     }
 
+    public void SetHpText(int currentValue)
+    {
+        currentHpText.text = player.currentHp.ToString();
+    }
+
+    public void SetHpText(int maxValue, int currentValue)
+    {
+        maxHpText.text = player.maxHp.ToString();
+        SetHpText(currentValue);
+        
+        // currentHpText.text = player.currentHp.ToString();
+    }
     // public void SetSlider(Slider slider, int minValue, int maxValue, int currentValue) {}
 }
