@@ -56,5 +56,10 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         // Debug.Log(col.gameObject.name); // 지우기
+        if (col.CompareTag("Enemy"))
+        {
+            var enemyInstance = col.gameObject.GetComponent<Enemy>();
+            Debug.Log($"받은 데미지 {enemyInstance.currentDamage} 남은 체력: {player.currentHp}"); // 지우기
+        }
     }
 }
