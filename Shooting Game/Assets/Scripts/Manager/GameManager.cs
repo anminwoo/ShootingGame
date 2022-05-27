@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        uiManager = GetComponent<UIManager>();
-        player = GetComponent<Player>();
+        uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"공격 받기 전 플레이어의 체력: {player.currentHp}"); // 지우기
         if (player.currentHp - damage <= player.minHp) // 플레이어 현재 체력 - 데미지가 최소 체력 보다 작을 때
         {
-            // 능력이라던지 특정 아이템 켜기
+            // 능력이라던지 특정 아이템 켜기, 사용
             player.currentHp = player.minHp;
             if (player.currentHp == 0)
             {

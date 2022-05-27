@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
     {
         currentHpText.text = player.currentHp.ToString(); // 플레이어 현재 체력 텍스트
         maxHpText.text     = player.maxHp.ToString(); // 플레이어 최대 체력 텍스트
-        scoreText.text     = 0.ToString(); // 점수 초기화
+        scoreText.text     = "Score: " + 0.ToString(); // 점수 초기화
         
         hpSlider.maxValue  = player.maxHp; // 플레이어 최대 체력 게이지
         hpSlider.value     = player.currentHp; // 플레이어 현재 체력 게이지
@@ -61,6 +61,6 @@ public class UIManager : MonoBehaviour
         hpSlider.maxValue = maxValue;     // 최대 hp
         hpSlider.value    = currentValue; // 현재 hp
     }
-    
+
     // public void SetSlider(Slider slider, int minValue, int maxValue, int currentValue) {}
 }

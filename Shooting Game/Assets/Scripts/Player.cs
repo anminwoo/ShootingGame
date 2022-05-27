@@ -20,13 +20,13 @@ public class Player : MonoBehaviour
 
     private void Awake() // PlayerSetting()
     {
-        maxHp = 100;
-        currentHp = maxHp;
-        minHp = 0;
-        baseDamage = 10;
+        maxHp         = 100;
+        currentHp     = maxHp;
+        minHp         = 0;
+        baseDamage    = 10;
         currentDamage = baseDamage;
-        baseSpeed = 10.0f;
-        currentSpeed = baseSpeed;
+        baseSpeed     = 10.0f;
+        currentSpeed  = baseSpeed;
     }
 
     void Start()
