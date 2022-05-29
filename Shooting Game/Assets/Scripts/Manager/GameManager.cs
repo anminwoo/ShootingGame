@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
             Debug.Log($"회복 후 플레이어의 체력: {player.currentHp}");
         }
         uiManager.SetHpSlider(player.currentHp);
+        uiManager.SetHpText(player.currentHp);
     }
     
     public void GetDamage(int damage) // 플레이어가 데미지를 입음
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
         }
 
         uiManager.SetHpSlider(player.currentHp);
+        uiManager.SetHpText(player.currentHp);
     }
     
     public void IncreaseDamage(int extraDamage) // 플레이어의 현재 공격력을 올린다.
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour
         player.maxHp += extraHp;
         player.currentHp += extraHp; //늘어난 체력만큼 현재 체력에도 추가.
         uiManager.SetHpSlider(player.maxHp, player.currentHp);
+        uiManager.SetHpText(player.maxHp, player.currentHp);
     }
 
     public void DecreaseMaxHp(int lossHp) // 플레이어의 최대체력을 줄인다
@@ -106,6 +109,7 @@ public class GameManager : MonoBehaviour
             player.currentHp = player.maxHp;
         }
         uiManager.SetHpSlider(player.maxHp, player.currentHp);
+        uiManager.SetHpText(player.maxHp, player.currentHp);
     }
     
     public void IncreaseSpeed(float extraSpeed) // 플레이어의 현재 이동속도를 올린다.
