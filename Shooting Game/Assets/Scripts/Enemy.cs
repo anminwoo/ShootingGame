@@ -28,8 +28,8 @@ public class Enemy : MonoBehaviour
         currentDamage = baseDamage;
         baseSpeed     = 3.0f;
         currentSpeed  = baseDamage;
-        
-        player   = gameObject.AddComponent<Player>();
+
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         rigid    = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
     }
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
     }
-
+    
     public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Bullet") || col.CompareTag("Player"))
