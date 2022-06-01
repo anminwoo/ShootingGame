@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxHpUpItem : Item
+public class DamageUpItem : Item
 {
-    private int maxHpPoint = 10;
+    private int damagePoint = 2;
     void Start()
     {
-        speed = 8f;
+        speed = 5f;
     }
 
     void Update()
@@ -22,7 +22,8 @@ public class MaxHpUpItem : Item
 
     public override void UseItem()
     {
-        Debug.Log($"최대 체력 증가 아이템");
-        GameManager.gameManager.IncreaseMaxHp(maxHpPoint);
+        Debug.Log($"데미지 증가 아이템"); // 지우기
+        Debug.Log($"currentDamage: {GameManager.gameManager.player.currentDamage}"); // 지우기
+        GameManager.gameManager.IncreaseDamage(damagePoint);
     }
 }
