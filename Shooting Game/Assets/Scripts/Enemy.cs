@@ -56,10 +56,9 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Bullet"))
+        if (col.CompareTag("Bullet") || col.CompareTag("Player"))
         {
             hp -= player.currentDamage;
-            Destroy(col.gameObject);
             if (isDead())
             {
                 Destroy(gameObject);

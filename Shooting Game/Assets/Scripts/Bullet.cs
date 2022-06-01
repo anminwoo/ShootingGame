@@ -30,7 +30,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.gameObject.name);
+        Debug.Log(col.gameObject.name); // 지우기
+        Destroy(gameObject);
     }
 
     private void OnBecameInvisible()
