@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            float randPosY = UnityEngine.Random.Range(-8f, 8.5f);
+            float randPosY = UnityEngine.Random.Range(-7f, 8.5f);
             Instantiate(enemies[0], new Vector3(transform.position.x, randPosY, transform.position.z), transform.rotation);
             yield return new WaitForSeconds(2f);
         }
