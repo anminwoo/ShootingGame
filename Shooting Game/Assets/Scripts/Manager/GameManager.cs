@@ -7,8 +7,9 @@ using UnityEngine.Video;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
-
-    public UIManager uiManager;
+    
+    public UIManager   uiManager;
+    public ItemManager itemManager;
 
     public Player player;
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
+        itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
