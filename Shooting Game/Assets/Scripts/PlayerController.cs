@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float _speed;
 
     private BoxCollider2D collider;
     private Player player;
@@ -15,7 +14,6 @@ public class PlayerController : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        _speed = player.currentSpeed;
     }
 
     void Start()
@@ -38,8 +36,8 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        h = h * _speed * Time.deltaTime;
-        v = v * _speed * Time.deltaTime;
+        h = h * player.currentSpeed * Time.deltaTime;
+        v = v * player.currentSpeed * Time.deltaTime;
         
         transform.Translate(Vector3.right * h);
         transform.Translate(Vector3.up * v);
