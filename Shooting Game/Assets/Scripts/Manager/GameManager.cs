@@ -7,8 +7,9 @@ using UnityEngine.Video;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
-
-    public UIManager uiManager;
+    
+    public UIManager   uiManager;
+    public ItemManager itemManager;
 
     public Player player;
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
+        itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
@@ -67,6 +69,12 @@ public class GameManager : MonoBehaviour
                 Debug.Log($"플레이어의 체력이 {player.currentHp}이 되어 사망하였습니다."); // 지우기
             }
             // 부활 기능도 추가하면 좋을 듯
+            else
+            {
+                player.currentHp = player.minHp;
+                player.minHp = 0;
+                Debug.Log($"플레이어의 최소 체력이 {player.minHp}가 되었습니다."); // 지우기
+            }
         }
         else
         {
