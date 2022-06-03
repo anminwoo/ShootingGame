@@ -23,7 +23,7 @@ public class DamageUpItem : Item
     public override void UseItem()
     {
         Debug.Log($"데미지 증가 아이템"); // 지우기
-        Debug.Log($"currentDamage: {GameManager.gameManager.player.currentDamage}"); // 지우기
         GameManager.gameManager.IncreaseDamage(damagePoint);
+        Debug.Log($"currentDamage: {GameManager.gameManager.player.currentDamage}"); // 지우기
     }
 }
