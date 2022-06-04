@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
             var enemyInstance = col.gameObject.GetComponent<Enemy>();
             Debug.Log($"enemyInstance currentDamage = {enemyInstance.currentDamage}");
             GameManager.gameManager.GetDamage(enemyInstance.currentDamage);
-            Debug.Log($"받은 데미지 {enemyInstance} 남은 체력: {player.currentHp}"); // 지우기
+            Debug.Log($"받은 데미지 {enemyInstance} 남은 체력: {player.currentHp} 남은 적 체력{enemyInstance.currentHp}"); // 지우기
         }
     }
 }
