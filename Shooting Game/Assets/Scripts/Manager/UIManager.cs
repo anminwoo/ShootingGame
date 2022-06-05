@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     public void GetScore(int getScore) // 플레이어 점수 획득
     {
         score += getScore;
-        scoreText.text = score.ToString();
+        scoreText.text = "Score: " + score.ToString();
     }
     
     public void SetHpSlider(int currentValue) // currentHp만 바꾸는 함수
