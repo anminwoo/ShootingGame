@@ -129,5 +129,10 @@ public class GameManager : MonoBehaviour
     {
         // 플레이어 이속이 음수가 되지 않도록 방지 해줘야 할 수도 있다
         player.currentSpeed -= lossSpeed;
+        Debug.Log($"플레이어 이속: {player.currentSpeed}"); // 지우기
+        if (player.currentSpeed <= 0) // 플레이어의 이속이 0보다 작아지면 0.5로 해줌. 나중에 minSpeed를 넣어주는 것도 좋을 듯.
+        {
+            player.currentSpeed = 0.5f;
+        }
     }
 }
