@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour
     public int   currentDamage;
     public float baseSpeed;
     public float currentSpeed;
-    
+    public int   giveScore; // 적을 처치했을 때 주는 점수
+
     private Rigidbody2D   rigid;
     private BoxCollider2D collider;
 
@@ -56,6 +57,7 @@ public class Enemy : MonoBehaviour
         currentDamage = baseDamage;
         baseSpeed     = 3.5f;
         currentSpeed  = baseSpeed;
+        giveScore     = 100;
     }
 
     public void OnTriggerEnter2D(Collider2D col)
@@ -66,7 +68,9 @@ public class Enemy : MonoBehaviour
             if (isDead())
             {
                 Destroy(gameObject);
-                Debug.Log($"{this.name} died.");
+                Debug.Log($"{this.name} died."); // 지우기
+                GameManager.gameManager.uiManager.GetScore(giveScore);
+                Debug.Log($"{giveScore}점을 얻었습니다."); // 지우기
             }
             Debug.Log($"Remain hp: {currentHp}");
         }
