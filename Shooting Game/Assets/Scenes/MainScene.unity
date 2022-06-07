@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 938759440}
   - component: {fileID: 938759439}
   m_Layer: 0
-  m_Name: SceneChange
+  m_Name: ButtonManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -769,8 +769,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 938759439}
-        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
-        m_MethodName: NextScene
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
