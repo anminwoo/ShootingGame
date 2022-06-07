@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     
     public UIManager   uiManager;
     public ItemManager itemManager;
+    public ButtonManager buttonManager;
 
     public Player player;
 
@@ -30,12 +31,16 @@ public class GameManager : MonoBehaviour
     {
         uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
         itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
+        buttonManager = GameObject.Find("Button Manager").GetComponent<ButtonManager>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            uiManager.ControlMenuPanel();
+        }
     }
     
     public void HealHp(int heal) // 플레이어가 회복을 받음

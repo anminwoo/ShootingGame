@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,9 +18,14 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Player player;
 
+    [SerializeField] private GameObject menuPanel;
+
+    private bool isMenuPanelOpen;
+    private bool isPause;
+
     private void Awake()
     {
-
+        
     }
 
     void Start()
@@ -31,11 +37,39 @@ public class UIManager : MonoBehaviour
         hpSlider.maxValue  = player.maxHp; // 플레이어 최대 체력 게이지
         hpSlider.value     = player.currentHp; // 플레이어 현재 체력 게이지
         // Debug.Log($"player hp: {player.hp}, player maxHp {player.maxHp}");
+
+        menuPanel = GameObject.Find("Canvas").transform.Find("Menu Panel").gameObject;
+        isMenuPanelOpen = false; // 메뉴 판넬이 끄기
+        isPause = false; // 게임 멈춤 끄기
     }
 
     void Update()
     {
+        
+    }
 
+    public void ControlMenuPanel()
+    {
+        isMenuPanelOpen = !isMenuPanelOpen;
+        Pause();
+        menuPanel.SetActive(isMenuPanelOpen);
+    }
+
+    public void Pause()
+    {
+        isPause = !isPause;
+        if (isPause)
+        {
+            Time.timeScale = 0;
+            Debug.Log("게임이 멈췄습니다.");
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Debug.Log("게임이 진행됩니다.");
+        }
+
+        // Time.timeScale = isPause == true ? 1 : 0;
     }
 
     public void GetScore(int getScore) // 플레이어 점수 획득
