@@ -15,7 +15,10 @@ public class Player : MonoBehaviour
     [Space]
     public float baseSpeed; // 기본 이동속도
     public float currentSpeed; // 현재 이동속도
-
+    [Space]
+    public int currentExp; // 플레이어의 현재 경험치
+    public int requireExp; // 플레이어의 요구 경험치
+    public int playerLevel; // 플레이어의 레벨
     public GameObject bullet;
 
     private void Awake() // PlayerSetting()
@@ -27,6 +30,9 @@ public class Player : MonoBehaviour
         currentDamage = baseDamage;
         baseSpeed     = 10.0f;
         currentSpeed  = baseSpeed;
+        currentExp    = 0;
+        requireExp    = 10;
+        playerLevel   = 1;
     }
 
     void Start()
