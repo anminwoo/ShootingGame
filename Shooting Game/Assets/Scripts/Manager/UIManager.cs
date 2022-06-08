@@ -13,15 +13,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text currentHpText;
     [SerializeField] private Text maxHpText;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text currentExpText;
+    [SerializeField] private Text requireExpText;
+    [SerializeField] private Text playerLevelText;
 
     [SerializeField] private Slider hpSlider;
+    [SerializeField] private Slider expSlider;
 
     [SerializeField] private Player player;
 
     [SerializeField] private GameObject menuPanel;
 
-    private bool isMenuPanelOpen;
-    private bool isPause;
+    private bool isMenuPanelOpen; // 메뉴가 열려있는지
+    private bool isPause; // 일시정지 상태인지
 
     private void Awake()
     {
@@ -30,13 +34,18 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        currentHpText.text = player.currentHp.ToString(); // 플레이어 현재 체력 텍스트
-        maxHpText.text     = player.maxHp.ToString(); // 플레이어 최대 체력 텍스트
-        scoreText.text     = "Score: " + 0.ToString(); // 점수 초기화
+        currentHpText.text  = player.currentHp.ToString(); // 플레이어 현재 체력 텍스트
+        maxHpText.text      = player.maxHp.ToString(); // 플레이어 최대 체력 텍스트
+        scoreText.text      = "Score: " + 0.ToString(); // 점수 초기화
+        currentExpText.text = player.currentExp.ToString(); // 플레이어 현재 경험치 텍스트
+        requireExpText.text = player.requireExp.ToString(); // 다음 레벨에 필요한 경험치 요구량
         
         hpSlider.maxValue  = player.maxHp; // 플레이어 최대 체력 게이지
         hpSlider.value     = player.currentHp; // 플레이어 현재 체력 게이지
         // Debug.Log($"player hp: {player.hp}, player maxHp {player.maxHp}");
+        playerLevelText.text = "Level: " + player.playerLevel.ToString();
+        expSlider.value    = player.currentExp; // 플레이어 현재 경험치 게이지
+        expSlider.maxValue = player.requireExp; // 플레이어 요구 경험치 게이지
 
         menuPanel = GameObject.Find("Canvas").transform.Find("Menu Panel").gameObject;
         isMenuPanelOpen = false; // 메뉴 판넬이 끄기
@@ -110,4 +119,31 @@ public class UIManager : MonoBehaviour
         // SetHpText(currentValue);
     }
     // public void SetSlider(Slider slider, int minValue, int maxValue, int currentValue) {}
+
+    public void SetLevelText(int level)
+    {
+        playerLevelText.text = "Level: " + player.playerLevel.ToString();
+    }
+
+    public void SetExpText(int currentValue)
+    {
+        currentExpText.text = currentValue.ToString();
+    }
+
+    public void SetRequireExpText(int requireValue)
+    {
+        requireExpText.text = requireValue.ToString();
+    }
+
+    public void SetExpSlider(int currentValue)
+    {
+        expSlider.value = currentValue;
+    }
+
+    public void SetExpSlider(int currentValue, int requireValue)
+    {
+        expSlider.value    = currentValue;
+        expSlider.maxValue = requireValue;
+    }
+    
 }
