@@ -140,4 +140,25 @@ public class GameManager : MonoBehaviour
             player.currentSpeed = 0.5f;
         }
     }
+
+    public void AddExp(int exp)
+    {
+        player.currentExp += exp;
+        Debug.Log($"플레이어의 현재 경험치: {player.currentExp}");
+        if (player.currentExp >= player.requireExp)
+        {
+            LevelUp();
+        }
+        uiManager.SetExpSlider(player.currentExp);
+        uiManager.SetExpText(player.currentExp);
+    }
+    
+    public void LevelUp()
+    {
+        player.currentExp -= player.requireExp;
+        player.playerLevel++;
+        uiManager.SetLevelText(player.playerLevel);
+        Debug.Log($"레벨업! 플레이어의 현재레벨: {player.playerLevel}, 플레이어의 현재 경험치{player.currentExp}");
+
+    }
 }
