@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale == 0)
-            return;
         Shoot();
     }
 
@@ -54,6 +52,10 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
+        if (Time.timeScale == 0) // 일시정지 상태일 때 멈춤
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(player.bullet, transform.position, player.bullet.transform.rotation);
