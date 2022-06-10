@@ -23,8 +23,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Player player;
 
     [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject abilityPanel;
 
     private bool isMenuPanelOpen; // 메뉴가 열려있는지
+    private bool isAbilityPanelOpen; // 능력선택창이 열려있는지
     private bool isPause; // 일시정지 상태인지
 
     private void Awake()
@@ -48,7 +50,9 @@ public class UIManager : MonoBehaviour
         expSlider.maxValue = player.requireExp; // 플레이어 요구 경험치 게이지
 
         menuPanel = GameObject.Find("Canvas").transform.Find("Menu Panel").gameObject;
+        abilityPanel = GameObject.Find("Canvas").transform.Find("Ability Choice Panel").gameObject;
         isMenuPanelOpen = false; // 메뉴 판넬이 끄기
+        isAbilityPanelOpen = false; // 능력선택창 끄기
         isPause = false; // 게임 멈춤 끄기
     }
 
@@ -63,10 +67,31 @@ public class UIManager : MonoBehaviour
         Pause();
         menuPanel.SetActive(isMenuPanelOpen);
     }
+    
+    public void ControlAbilityPanel()
+    {
+        isAbilityPanelOpen = !isAbilityPanelOpen;
+        Pause();
+        abilityPanel.SetActive(isAbilityPanelOpen);
+        /*isAbilityPanelOpen = true;
+        Pause();
+        abilityPanel.SetActive(isAbilityPanelOpen);
+        // 능력을 선택한다면 했다면
+        isAbilityPanelOpen = false;
+        abilityPanel.SetActive(isAbilityPanelOpen);
+        Pause();*/
+    }
 
     public void Pause()
     {
-        isPause = !isPause;
+        if (isMenuPanelOpen || isAbilityPanelOpen) // 메뉴나 능력선택창이 켜져있을 경우
+        {
+            isPause = true;
+        }
+        else
+        {
+            isPause = false;
+        }
         if (isPause)
         {
             Time.timeScale = 0;
@@ -145,5 +170,4 @@ public class UIManager : MonoBehaviour
         expSlider.value    = currentValue;
         expSlider.maxValue = requireValue;
     }
-    
 }
