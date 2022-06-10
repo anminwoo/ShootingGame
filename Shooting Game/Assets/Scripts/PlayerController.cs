@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
         Shoot();
     }
 
