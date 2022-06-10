@@ -711,6 +711,7 @@ MonoBehaviour:
   expSlider: {fileID: 1347718522}
   player: {fileID: 545119126}
   menuPanel: {fileID: 0}
+  abilityPanel: {fileID: 0}
 --- !u!4 &227475049
 Transform:
   m_ObjectHideFlags: 0
@@ -924,7 +925,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 556183339}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1005,7 +1006,7 @@ RectTransform:
   - {fileID: 1783304614}
   - {fileID: 748314824}
   m_Father: {fileID: 556183339}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1161,7 +1162,7 @@ RectTransform:
   - {fileID: 203065171}
   - {fileID: 27753094}
   m_Father: {fileID: 556183339}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1553,10 +1554,10 @@ RectTransform:
   m_Children:
   - {fileID: 1386921049}
   - {fileID: 1791253}
+  - {fileID: 1601566036}
   - {fileID: 339598918}
   - {fileID: 520882271}
   - {fileID: 367954705}
-  - {fileID: 1601566036}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2836,7 +2837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1601566036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2852,7 +2853,7 @@ RectTransform:
   - {fileID: 936950738}
   - {fileID: 2057188969}
   m_Father: {fileID: 556183339}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

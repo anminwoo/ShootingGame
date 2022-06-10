@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
         {
             uiManager.ControlMenuPanel();
         }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            uiManager.ControlAbilityPanel();
+        }
     }
     
     public void HealHp(int heal) // 플레이어가 회복을 받음
@@ -158,7 +163,7 @@ public class GameManager : MonoBehaviour
         player.currentExp -= player.requireExp;
         player.playerLevel++;
         uiManager.SetLevelText(player.playerLevel);
-        Debug.Log($"레벨업! 플레이어의 현재레벨: {player.playerLevel}, 플레이어의 현재 경험치{player.currentExp}");
-
+        Debug.Log($"레벨업! 플레이어의 현재레벨: {player.playerLevel}, 플레이어의 현재 경험치{player.currentExp}"); // 지우기
+        uiManager.ControlAbilityPanel();
     }
 }
