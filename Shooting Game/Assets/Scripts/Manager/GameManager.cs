@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour
@@ -164,6 +167,13 @@ public class GameManager : MonoBehaviour
         player.playerLevel++;
         uiManager.SetLevelText(player.playerLevel);
         Debug.Log($"레벨업! 플레이어의 현재레벨: {player.playerLevel}, 플레이어의 현재 경험치{player.currentExp}"); // 지우기
+        uiManager.ControlAbilityPanel();
+    }
+
+    public void SelectAbility()
+    {
+        GameObject clickObject = EventSystem.current.currentSelectedGameObject;
+        Debug.Log($"버튼 이름: {clickObject.name}, 버튼 설명: {clickObject.GetComponentInChildren<Text>().text}");
         uiManager.ControlAbilityPanel();
     }
 }
