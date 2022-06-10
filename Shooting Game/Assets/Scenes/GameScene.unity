@@ -2832,7 +2832,7 @@ GameObject:
   - component: {fileID: 1601566038}
   - component: {fileID: 1601566037}
   m_Layer: 5
-  m_Name: Ability Choice Panel
+  m_Name: Ability Select Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
