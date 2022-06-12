@@ -48,4 +48,9 @@ public class ItemManager : MonoBehaviour
     {
         
     }
+    
+    public void DropItem(GameObject gameObject)
+    {
+        Instantiate(items[(int)ItemNumber.healItem], gameObject.transform.position, gameObject.transform.rotation);
+    }
 }
