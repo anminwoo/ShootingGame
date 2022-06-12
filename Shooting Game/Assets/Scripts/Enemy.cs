@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour
     public float currentSpeed;
     public int   score; // 적을 처치했을 때 주는 점수
     public int   exp;
+    public float dropChance; // 아이템 드랍률
 
     private Rigidbody2D   rigid;
     private BoxCollider2D collider;
@@ -30,7 +32,7 @@ public class Enemy : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
     }
 
-    void Start()
+    private void Start()
     {
         
     }
@@ -60,6 +62,7 @@ public class Enemy : MonoBehaviour
         currentSpeed  = baseSpeed;
         score         = 100;
         exp           = 2;
+        dropChance    = 0.2f;
     }
 
     public void OnTriggerEnter2D(Collider2D col)
@@ -75,8 +78,15 @@ public class Enemy : MonoBehaviour
                 Debug.Log($"{score}점을 얻었습니다."); // 지우기
                 GameManager.gameManager.AddExp(exp);
                 Debug.Log($"{exp}exp를 얻었습니다."); // 지우기
+                var rand = Random.Range(0, 1f);
+                if (rand <= dropChance)
+                {
+                    GameManager.gameManager.itemManager.DropItem(this.gameObject);
+                    // 아이템 드랍
+                }
+                
             }
-            Debug.Log($"Remain hp: {currentHp}");
+            Debug.Log($"Remain hp: {currentHp}"); // 지우기
         }
     }
 
