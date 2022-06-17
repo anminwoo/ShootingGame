@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ItemManager : MonoBehaviour
 {
@@ -14,8 +15,6 @@ public class ItemManager : MonoBehaviour
         speedUpItem = 3
     }
     
-    public static ItemManager itemManager;
-    
     [SerializeField] private Item[] items;
     [Space] 
     [SerializeField] private int itemCount;
@@ -24,6 +23,10 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private Item maxHpUpItem;
     [SerializeField] private Item shieldItem;
     [SerializeField] private Item speedUpItem;
+
+    public int[] table = { 40, 30, 30 };
+    public int total;
+    public int randomNum;
 
     private void Awake()
     {
@@ -37,6 +40,8 @@ public class ItemManager : MonoBehaviour
         items[(int)ItemNumber.maxHpUpItem] = maxHpUpItem;
         items[(int)ItemNumber.shieldItem]  = shieldItem;
         items[(int)ItemNumber.speedUpItem] = speedUpItem;
+
+        total = 100;
     }
 
     void Start()
@@ -52,5 +57,25 @@ public class ItemManager : MonoBehaviour
     public void DropItem(GameObject gameObject)
     {
         Instantiate(items[(int)ItemNumber.healItem], gameObject.transform.position, gameObject.transform.rotation);
+    }
+
+    public void ItemLoot(Enemy enemy)
+    {
+        randomNum = Random.Range(0, total + 1);
+
+        for (int i = 0; i < enemy.table.Length; i++)
+        {
+            if (randomNum <= enemy.table[i])
+            {
+                Debug.Log("RandomNumber: " + randomNum + "\t" + enemy.table[i]);
+                Instantiate(items[i], enemy.transform.position, enemy.transform.rotation);
+                return;
+            }
+            else
+            {
+                Debug.Log($"RandomNumber - enemy.table[i] = {randomNum}");
+                randomNum -= enemy.table[i];
+            }
+        }
     }
 }
