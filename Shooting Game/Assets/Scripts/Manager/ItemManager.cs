@@ -24,10 +24,6 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private Item shieldItem;
     [SerializeField] private Item speedUpItem;
 
-    public int[] table = { 40, 30, 30 };
-    public int total;
-    public int randomNum;
-
     private void Awake()
     {
         itemCount = 4;
@@ -40,42 +36,10 @@ public class ItemManager : MonoBehaviour
         items[(int)ItemNumber.maxHpUpItem] = maxHpUpItem;
         items[(int)ItemNumber.shieldItem]  = shieldItem;
         items[(int)ItemNumber.speedUpItem] = speedUpItem;
-
-        total = 100;
     }
 
-    void Start()
+    public void DropItem(GameObject enemy)
     {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-    
-    public void DropItem(GameObject gameObject)
-    {
-        Instantiate(items[(int)ItemNumber.healItem], gameObject.transform.position, gameObject.transform.rotation);
-    }
-
-    public void ItemLoot(Enemy enemy)
-    {
-        randomNum = Random.Range(0, total + 1);
-
-        for (int i = 0; i < enemy.table.Length; i++)
-        {
-            if (randomNum <= enemy.table[i])
-            {
-                Debug.Log("RandomNumber: " + randomNum + "\t" + enemy.table[i]);
-                Instantiate(items[i], enemy.transform.position, enemy.transform.rotation);
-                return;
-            }
-            else
-            {
-                Debug.Log($"RandomNumber - enemy.table[i] = {randomNum}");
-                randomNum -= enemy.table[i];
-            }
-        }
+        Instantiate(items[Random.Range(0, itemCount)], enemy.transform.position, enemy.transform.rotation);
     }
 }

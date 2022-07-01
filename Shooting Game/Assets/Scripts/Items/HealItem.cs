@@ -7,6 +7,7 @@ using UnityEngine;
 public class HealItem : Item
 {
     private int healPoint = 30;
+
     void Start()
     {
         speed = 5f;

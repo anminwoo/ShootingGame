@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
 
         menuPanel = GameObject.Find("Canvas").transform.Find("Menu Panel").gameObject;
         abilityPanel = GameObject.Find("Canvas").transform.Find("Ability Select Panel").gameObject;
-        isMenuPanelOpen = false; // 메뉴 판넬이 끄기
+        isMenuPanelOpen = false; // 메뉴 판넬 끄기
         isAbilityPanelOpen = false; // 능력선택창 끄기
         isPause = false; // 게임 멈춤 끄기
     }
