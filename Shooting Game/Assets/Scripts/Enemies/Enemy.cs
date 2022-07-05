@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
     }
 
-    public void EnemySetting() // 적 능력치 설정 함수
+    public virtual void EnemySetting() // 적 능력치 설정 함수
     {
         maxHp         = 20;
         currentHp     = maxHp;
