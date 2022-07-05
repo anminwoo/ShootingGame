@@ -18,18 +18,13 @@ public class Enemy : MonoBehaviour
     public int   score; // 적을 처치했을 때 주는 점수
     public int   exp;
     public int dropChance; // 아이템 드랍률
-
-    private Rigidbody2D   rigid;
-    private BoxCollider2D collider;
-
+    
     [SerializeField] private Player player;
 
-    public void Awake()
+    public virtual void Awake()
     {
         EnemySetting(); // 적의 능력치 설정
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        rigid    = GetComponent<Rigidbody2D>();
-        collider = GetComponent<BoxCollider2D>();
     }
 
     private void Start()

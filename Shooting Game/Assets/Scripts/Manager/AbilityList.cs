@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class AbilityList : MonoBehaviour
 {
-    private List<T Ability, T AbilityImage> abilityList = new List<T Ability, T AbilityImage>();
+    // private List<T Ability, T AbilityImage> abilityList = new List<T Ability, T AbilityImage>();
 }

@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class BigEnemy : Enemy
 {
+    private Rigidbody2D   rigid;
+    private BoxCollider2D collider;
+    
+    public override void Awake()
+    {
+        base.Awake();
+        rigid    = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
+    }
+
     public override void EnemySetting()
     {
         maxHp         = 50;

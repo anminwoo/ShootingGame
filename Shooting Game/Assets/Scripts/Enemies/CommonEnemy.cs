@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class CommonEnemy : Enemy
 {
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
     void Start()
     {
         

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class FastEnemy : Enemy
 {
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
     public override void EnemySetting()
     {
         maxHp         = 15;
