@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -68,6 +69,11 @@ public class PlayerController : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             var enemyInstance = col.gameObject.GetComponent<Enemy>();
+            if (player.currentHp - enemyInstance.currentDamage <= 0) // 죽음
+            {
+                Destroy(player.gameObject);
+                GameManager.gameManager.buttonManager.ChangeScene("GameOverScene");
+            }
             Debug.Log($"enemyInstance currentDamage = {enemyInstance.currentDamage}");
             GameManager.gameManager.GetDamage(enemyInstance.currentDamage);
             Debug.Log($"받은 데미지 {enemyInstance} 남은 체력: {player.currentHp} 남은 적 체력{enemyInstance.currentHp}"); // 지우기

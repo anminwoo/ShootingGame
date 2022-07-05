@@ -176,4 +176,5 @@ public class GameManager : MonoBehaviour
         Debug.Log($"버튼 이름: {clickObject.name}, 버튼 설명: {clickObject.GetComponentInChildren<Text>().text}");
         uiManager.ControlAbilityPanel();
     }
+    
 }
