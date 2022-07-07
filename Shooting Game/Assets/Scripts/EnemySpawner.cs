@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = System.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -21,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             float randPosY = UnityEngine.Random.Range(-7f, 8.5f);
-            Instantiate(enemies[0], new Vector3(transform.position.x, randPosY, transform.position.z), transform.rotation);
+            Instantiate(enemies[Random.Range(0, 3)], new Vector3(transform.position.x, randPosY, transform.position.z), transform.rotation);
             yield return new WaitForSeconds(2f);
         }
     }
