@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public UIManager   uiManager;
     public ItemManager itemManager;
     public ButtonManager buttonManager;
+    public AbilityManager abilityManager;
 
     public Player player;
 
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
         itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
         buttonManager = GameObject.Find("Button Manager").GetComponent<ButtonManager>();
+        abilityManager = GameObject.Find("Ability Manager").GetComponent<AbilityManager>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
@@ -176,5 +178,10 @@ public class GameManager : MonoBehaviour
         Debug.Log($"버튼 이름: {clickObject.name}, 버튼 설명: {clickObject.GetComponentInChildren<Text>().text}");
         uiManager.ControlAbilityPanel();
     }
-    
+
+    IEnumerator DamagedCoroutine()
+    {
+        
+        yield return new WaitForSeconds(1.5f);
+    }
 }

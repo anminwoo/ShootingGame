@@ -30,6 +30,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Shoot();
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            float growSize = 1.25f;
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * growSize, gameObject.transform.localScale.y * growSize);
+            Debug.Log($"Player가 커졌습니다.");
+        }
     }
 
     void Move()
@@ -69,13 +76,13 @@ public class PlayerController : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             var enemyInstance = col.gameObject.GetComponent<Enemy>();
-            if (player.currentHp - enemyInstance.currentDamage <= 0) // 죽음
-            {
-                Destroy(player.gameObject);
-                GameManager.gameManager.buttonManager.ChangeScene("GameOverScene");
-            }
             Debug.Log($"enemyInstance currentDamage = {enemyInstance.currentDamage}");
             GameManager.gameManager.GetDamage(enemyInstance.currentDamage);
+            if (player.currentHp <= 0) // 죽음
+            {
+                player.gameObject.SetActive(false);
+                GameManager.gameManager.buttonManager.ChangeScene("GameOverScene");
+            }
             Debug.Log($"받은 데미지 {enemyInstance} 남은 체력: {player.currentHp} 남은 적 체력{enemyInstance.currentHp}"); // 지우기
         }
     }

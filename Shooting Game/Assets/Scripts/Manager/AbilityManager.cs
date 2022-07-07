@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
+
     void Start()
     {
-        
     }
     
-    void Update()
-    {
-        
-    }
 }

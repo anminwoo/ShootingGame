@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         minHp         = 0;
         baseDamage    = 10;
         currentDamage = baseDamage;
-        baseSpeed     = 10.0f;
+        baseSpeed     = 6.0f;
         currentSpeed  = baseSpeed;
         currentExp    = 0;
         requireExp    = 10;

@@ -23,6 +23,6 @@ public class SpeedUpItem : Item
     public override void UseItem()
     {
         Debug.Log($"스피드업 아이템");
-        GameManager.gameManager.IncreaseSpeed(2f);
+        GameManager.gameManager.IncreaseSpeed(0.5f);
     }
 }
