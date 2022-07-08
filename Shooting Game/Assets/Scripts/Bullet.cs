@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float bulletSize;
     private float baseSpeed;
-    private float currentSpeed;
+    public float currentSpeed;
 
     private CapsuleCollider2D collider;
     
     
     private void Awake()
     {
+        bulletSize = 0.3f;
         baseSpeed = 15.0f;
         currentSpeed = baseSpeed;
+        gameObject.transform.localScale = new Vector3(bulletSize, bulletSize);
         collider = GetComponent<CapsuleCollider2D>();
     }
 
