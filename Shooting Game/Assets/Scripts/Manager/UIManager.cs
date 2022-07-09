@@ -6,6 +6,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using Button = UnityEngine.UIElements.Button;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,8 +24,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Player player;
 
     [SerializeField] private GameObject menuPanel;
+    
     [SerializeField] private GameObject abilityPanel;
-
+    [SerializeField] private Button abilityButton1;
+    [SerializeField] private Button abilityButton2;
+    [SerializeField] private Button abilityButton3;
+    
+    
     private bool isMenuPanelOpen; // 메뉴가 열려있는지
     private bool isAbilityPanelOpen; // 능력선택창이 열려있는지
     private bool isPause; // 일시정지 상태인지
@@ -73,13 +79,6 @@ public class UIManager : MonoBehaviour
         isAbilityPanelOpen = !isAbilityPanelOpen;
         Pause();
         abilityPanel.SetActive(isAbilityPanelOpen);
-        /*isAbilityPanelOpen = true;
-        Pause();
-        abilityPanel.SetActive(isAbilityPanelOpen);
-        // 능력을 선택한다면 했다면
-        isAbilityPanelOpen = false;
-        abilityPanel.SetActive(isAbilityPanelOpen);
-        Pause();*/
     }
 
     public void Pause()
