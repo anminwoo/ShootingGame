@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Player States")]
+    [Header("Player States")] 
+    public int   revivalChance;
     public int   currentHp; // 현재 체력
     public int   maxHp; // 최대 체력
     public int   minHp; // 최소 체력
@@ -19,13 +20,15 @@ public class Player : MonoBehaviour
     public int currentExp; // 플레이어의 현재 경험치
     public int requireExp; // 플레이어의 요구 경험치
     public int playerLevel; // 플레이어의 레벨
+   
     public GameObject bullet;
 
     private void Awake() // PlayerSetting()
     {
+        revivalChance = 1;
         maxHp         = 100;
         currentHp     = maxHp;
-        minHp         = 0;
+        minHp         = 1;
         baseDamage    = 10;
         currentDamage = baseDamage;
         baseSpeed     = 6.0f;

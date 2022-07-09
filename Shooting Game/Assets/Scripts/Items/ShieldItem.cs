@@ -5,7 +5,7 @@ using UnityEngine.Video;
 
 public class ShieldItem : Item
 {
-    void Start()
+    private void Start()
     {
         speed = 5f;
     }

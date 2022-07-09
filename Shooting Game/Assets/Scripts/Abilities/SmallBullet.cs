@@ -12,6 +12,6 @@ public class SmallBullet : MonoBehaviour
     public void Decrease()
     {
         bullet.GetComponent<Bullet>().bulletSize *= amount;
-        player.GetComponent<Player>().currentDamage += 5;
+        player.GetComponent<Player>().currentDamage += damageBonus;
     }
 }
