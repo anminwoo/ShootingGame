@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ExperienceItem : Item
+public class ExpItem : Item
 {
     private int expAmount = 5;
     private void Start()

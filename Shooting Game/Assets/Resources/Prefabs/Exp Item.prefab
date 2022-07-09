@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8338338669953056513}
   - component: {fileID: 1686887701594146537}
   m_Layer: 0
-  m_Name: Experience Item
+  m_Name: Exp Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
