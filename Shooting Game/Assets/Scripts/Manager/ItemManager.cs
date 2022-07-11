@@ -30,7 +30,7 @@ public class ItemManager : MonoBehaviour
 
     private void Awake()
     {
-        itemCount = items.Length;
+        itemCount = 6;
         healItem    = Resources.Load<Item>("Prefabs/Heal Item");
         maxHpUpItem = Resources.Load<Item>("Prefabs/MaxHpUp Item");
         shieldItem  = Resources.Load<Item>("Prefabs/Shield Item");

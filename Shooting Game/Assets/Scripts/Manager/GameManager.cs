@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.Video;
+using Button = UnityEngine.UI.Button;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public ItemManager itemManager;
     public ButtonManager buttonManager;
     public StatusEffectManager statusEffectManager;
+
+    public Button attackSpeedButton;
 
     public Player player;
 
@@ -164,6 +167,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void IncreaseAttackSpeed(float extraSpeed)
+    {
+        if (player.currentAttackSpeed <= 0.4f)
+        {
+            player.currentAttackSpeed = 0.4f;
+            attackSpeedButton.GetComponent<Button>().interactable = false;
+
+        }
+        player.currentAttackSpeed -= extraSpeed;
+    }
+
+    public void DecreaseAttackSpeed(float lossSpeed)
+    {
+        player.currentAttackSpeed += lossSpeed;
+    }
+
     public void AddExp(int exp)
     {
         player.currentExp += exp;
@@ -184,14 +203,14 @@ public class GameManager : MonoBehaviour
         Debug.Log($"레벨업! 플레이어의 현재레벨: {player.playerLevel}, 플레이어의 현재 경험치{player.currentExp}"); // 지우기
         uiManager.ControlAbilityPanel();
     }
-
+    
     public void SelectAbility()
     {
         GameObject clickObject = EventSystem.current.currentSelectedGameObject;
         Debug.Log($"버튼 이름: {clickObject.name}, 버튼 설명: {clickObject.GetComponentInChildren<Text>().text}");
         uiManager.ControlAbilityPanel();
     }
-    
+
     void Dead()
     {
         player.gameObject.SetActive(false);

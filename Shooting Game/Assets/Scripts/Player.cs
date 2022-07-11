@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [Space]
     public int   baseDamage; // 기본 공격력
     public int   currentDamage; // 현재 공격력
+    public float baseAttackSpeed;
+    public float currentAttackSpeed;
     [Space]
     public float baseSpeed; // 기본 이동속도
     public float currentSpeed; // 현재 이동속도
@@ -31,20 +33,12 @@ public class Player : MonoBehaviour
         minHp         = 1;
         baseDamage    = 10;
         currentDamage = baseDamage;
+        baseAttackSpeed = 1f;
+        currentAttackSpeed = baseAttackSpeed;
         baseSpeed     = 6.0f;
         currentSpeed  = baseSpeed;
         currentExp    = 0;
         requireExp    = 10;
         playerLevel   = 1;
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 }

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
+        StartCoroutine(ShootCoroutine());
     }
 
     private void FixedUpdate()
@@ -29,14 +29,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Shoot();
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            float growSize = 1.25f;
-            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * growSize, gameObject.transform.localScale.y * growSize);
-            Debug.Log($"Player가 커졌습니다.");
-        }
+        
     }
 
     void Move()
@@ -58,15 +51,12 @@ public class PlayerController : MonoBehaviour
         transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
 
-    void Shoot()
+    IEnumerator ShootCoroutine()
     {
-        if (Time.timeScale == 0) // 일시정지 상태일 때 멈춤
-        {
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
+        while (Time.timeScale != 0)
         {
             Instantiate(player.bullet, transform.position, player.bullet.transform.rotation);
+            yield return new WaitForSeconds(player.currentAttackSpeed);
         }
     }
 
@@ -78,11 +68,6 @@ public class PlayerController : MonoBehaviour
             var enemyInstance = col.gameObject.GetComponent<Enemy>();
             Debug.Log($"enemyInstance currentDamage = {enemyInstance.currentDamage}");
             GameManager.gameManager.GetDamage(enemyInstance.currentDamage);
-            if (player.currentHp <= 0) // 죽음
-            {
-                player.gameObject.SetActive(false);
-                GameManager.gameManager.buttonManager.ChangeScene("GameOverScene");
-            }
             Debug.Log($"받은 데미지 {enemyInstance} 남은 체력: {player.currentHp} 남은 적 체력{enemyInstance.currentHp}"); // 지우기
         }
     }
