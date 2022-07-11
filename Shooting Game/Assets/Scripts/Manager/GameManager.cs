@@ -190,6 +190,7 @@ public class GameManager : MonoBehaviour
         if (player.currentExp >= player.requireExp)
         {
             LevelUp();
+            return;
         }
         uiManager.SetExpSlider(player.currentExp);
         uiManager.SetExpText(player.currentExp);
@@ -199,8 +200,11 @@ public class GameManager : MonoBehaviour
     {
         player.currentExp -= player.requireExp;
         player.playerLevel++;
+        player.requireExp = 10 * player.playerLevel + (player.playerLevel / 2) * 5; // 다음 레벨업 필요 경험치 밸런스
         uiManager.SetLevelText(player.playerLevel);
-        Debug.Log($"레벨업! 플레이어의 현재레벨: {player.playerLevel}, 플레이어의 현재 경험치{player.currentExp}"); // 지우기
+        uiManager.SetExpSlider(player.currentExp, player.requireExp);
+        uiManager.SetExpText(player.currentExp);
+        uiManager.SetRequireExpText(player.requireExp);
         uiManager.ControlAbilityPanel();
     }
     

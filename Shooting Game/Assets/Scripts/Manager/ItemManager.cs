@@ -48,6 +48,6 @@ public class ItemManager : MonoBehaviour
 
     public void DropItem(GameObject enemy)
     {
-        Instantiate(items[Random.Range(0, itemCount)], enemy.transform.position, enemy.transform.rotation);
+        Instantiate(items[Random.Range(0, itemCount + 1)], enemy.transform.position, enemy.transform.rotation);
     }
 }
