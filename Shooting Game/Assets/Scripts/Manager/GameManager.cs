@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public UIManager   uiManager;
     public ItemManager itemManager;
     public ButtonManager buttonManager;
-    public AbilityManager abilityManager;
     public StatusEffectManager statusEffectManager;
 
     public Player player;
@@ -38,8 +37,7 @@ public class GameManager : MonoBehaviour
         uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
         itemManager = GameObject.Find("Item Manager").GetComponent<ItemManager>();
         buttonManager = GameObject.Find("Button Manager").GetComponent<ButtonManager>();
-        abilityManager = GameObject.Find("Ability Manager").GetComponent<AbilityManager>();
-        statusEffectManager = GetComponent<StatusEffectManager>();
+        statusEffectManager = GameObject.Find("StatusEffect Manager").GetComponent<StatusEffectManager>();
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
@@ -84,9 +82,9 @@ public class GameManager : MonoBehaviour
         Debug.Log($"공격 받기 전 플레이어의 체력: {player.currentHp}"); // 지우기
         if (player.currentHp - damage < player.minHp)
         {
-            player.currentHp = player.minHp;
-            if (player.currentHp == 0)
+            if (player.minHp == 1)
             {
+                player.currentHp = 0;
                 if (player.revivalChance != 0) // 부활
                 {
                     player.revivalChance--;
@@ -94,15 +92,16 @@ public class GameManager : MonoBehaviour
                     HealHp(20);
                     return;
                 }
-                // Dead()
-                Debug.Log($"플레이어의 체력이 {player.currentHp}이 되어 사망하였습니다."); // 지우기
+                else
+                {
+                    Dead();
+                    Debug.Log($"플레이어의 체력이 {player.currentHp}이 되어 사망하였습니다."); // 지우기
+                }
             }
-            
             else
             {
-                player.currentHp = player.minHp;
-                player.minHp = 0;
-                Debug.Log($"플레이어의 최소 체력이 {player.minHp}가 되었습니다."); // 지우기
+                player.currentHp = player.minHp; // 보호막 아이템을 먹었을 경우
+                player.minHp = 1;
             }
         }
         else
@@ -191,5 +190,11 @@ public class GameManager : MonoBehaviour
         GameObject clickObject = EventSystem.current.currentSelectedGameObject;
         Debug.Log($"버튼 이름: {clickObject.name}, 버튼 설명: {clickObject.GetComponentInChildren<Text>().text}");
         uiManager.ControlAbilityPanel();
+    }
+    
+    void Dead()
+    {
+        player.gameObject.SetActive(false);
+        buttonManager.ChangeScene("GameOverScene");
     }
 }
