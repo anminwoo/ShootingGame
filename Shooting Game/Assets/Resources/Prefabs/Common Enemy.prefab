@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.66415095, b: 0.66415095, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -144,10 +144,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2526f2321c74bc64bbf25da373849757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  currentHp: 0
   maxHp: 0
   baseDamage: 0
   currentDamage: 0
   baseSpeed: 0
   currentSpeed: 0
+  score: 0
+  exp: 0
+  dropChance: 0
   player: {fileID: 0}
